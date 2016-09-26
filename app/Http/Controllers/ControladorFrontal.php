@@ -1,6 +1,6 @@
 <?php
 
-namespace buyIt\Http\Controllers;
+namespace comercialBuyIt\Http\Controllers;
 
 use Illuminate\Http\Request;
 

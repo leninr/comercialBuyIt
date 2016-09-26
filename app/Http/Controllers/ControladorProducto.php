@@ -1,15 +1,15 @@
 <?php
 
-namespace buyIt\Http\Controllers;
+namespace comercialBuyIt\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Image;
-use buyIt\Producto;
-use buyIt\TiposProducto;
+use comercialBuyIt\Producto;
+use comercialBuyIt\TiposProducto;
 use Session;
-use buyIt\Http\Requests;
-use buyIt\Http\Requests\ProductoCreateRequest;
-use buyIt\Http\Requests\ProductoUpdateRequest;
+use comercialBuyIt\Http\Requests;
+use comercialBuyIt\Http\Requests\ProductoCreateRequest;
+use comercialBuyIt\Http\Requests\ProductoUpdateRequest;
 use Illuminate\Support\Facades\Input;
 
 class ControladorProducto extends Controller

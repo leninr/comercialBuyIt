@@ -1,14 +1,14 @@
 <?php
 
-namespace buyIt\Http\Controllers;
+namespace comercialBuyIt\Http\Controllers;
 
 use Illuminate\Http\Request;
-use buyIt\Http\Requests\UsuarioCreateRequest;
-use buyIt\Http\Requests\UsuarioUpdateRequest;
+use comercialBuyIt\Http\Requests\UsuarioCreateRequest;
+use comercialBuyIt\Http\Requests\UsuarioUpdateRequest;
 use Session;
-use buyIt\Usuario;
-use buyIt\Ciudad;
-use buyIt\Http\Requests;
+use bucomercialBuyItyIt\Usuario;
+use comercialBuyIt\Ciudad;
+use comercialBuyIt\Http\Requests;
 
 class ControladorUsuario extends Controller
 {

@@ -20,27 +20,53 @@
   <body>
 
     <!-- Start Top Bar -->
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="menu">
-          <li class="menu-text">buyIt!</li>
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">buyIt!</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <!-- Authentication Links -->
+            @if (Auth::guest())
+                <li><a href="{{ url('/login') }}">Login</a></li>
+                <li><a href="{{ url('/register') }}">Registrar</a></li>
+            @else
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil</a></li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ url('/logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out fa-fw"></i>
+                                 Salir
+                            </a>
+
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            @endif
         </ul>
-      </div>
-      <div class="top-bar-right">
-        <ul class="menu">
-          <li><a href="#">Three</a></li>
-          <li><a href="#">Four</a></li>
-          <li><a href="#">Five</a></li>
-          <li><a href="#">Six</a></li>
-        </ul>
-      </div>
-    </div>
+      </nav>
     <!-- End Top Bar -->
 
     <div class="Main">
-      @yield('content')
+      @yield('contenido')
     </div>
 
 
