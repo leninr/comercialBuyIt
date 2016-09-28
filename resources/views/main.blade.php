@@ -1,5 +1,5 @@
 @extends('layouts.maestra')
-@section('content')
+@section('contenido')
 
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
   <ul class="orbit-container">
