@@ -17,7 +17,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('admin', 'ControladorFrontal@admin');
+Route::get('/admin', 'ControladorFrontal@admin');
 
 Route::resource('usuario','ControladorUsuario');
 Route::resource('producto','ControladorProducto');

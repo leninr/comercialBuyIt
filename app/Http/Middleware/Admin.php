@@ -17,10 +17,10 @@ class Admin
     {
         if ( Auth::check() && Auth::user()->isAdmin() )
         {
-            return $next($request);
+            return view('/admin');
         }
         else {
-            return ('/');
+            return view('/');
         }
     }
 }
