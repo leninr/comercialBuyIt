@@ -3,6 +3,7 @@
 namespace comercialBuyIt\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Admin
 {
@@ -17,7 +18,7 @@ class Admin
     {
         if ( Auth::check() && Auth::user()->isAdmin() )
         {
-            return view('/admin');
+            return view('admin/menuAdmin');
         }
         else {
             return view('/');

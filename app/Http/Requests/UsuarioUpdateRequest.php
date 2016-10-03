@@ -27,7 +27,7 @@ class UsuarioUpdateRequest extends FormRequest
           'userName' => 'required',
           'nombresUsuario' => 'required',
           'apellidosUsuario' => 'required',
-          'emailUsuario' => 'required',
+          'email' => 'required',
           'direccionUsuario' => 'required',
           //'idCiudadUsuario' => 'required',
         ];

@@ -7,7 +7,7 @@
 	{!!Form::open(['route'=>'usuario.store', 'method'=>'POST'])!!}
 		<div class="form-group">
 			{!!Form::label('Username: ')!!}
-			{!!Form::text('userName', null,['class'=>'form-control', 'placeholder'=>'Ingresa el nombre de usuario'])!!}
+			{!!Form::text('name', null,['class'=>'form-control', 'placeholder'=>'Ingresa el nombre de usuario'])!!}
 		</div>
 		<div class="form-group">
 			<label for="">Password: </label>
@@ -23,7 +23,7 @@
 		</div>
 		<div class="form-group">
 			{!!Form::label('Email: ')!!}
-			{!!Form::email('emailUsuario', null,['class'=>'form-control', 'placeholder'=>'Ingresa tu email'])!!}
+			{!!Form::email('email', null,['class'=>'form-control', 'placeholder'=>'Ingresa tu email'])!!}
 		</div>
 		<div class="form-group">
 			<label for="">Ciudad: </label><br>
@@ -37,6 +37,14 @@
 			{!!Form::label('Dirección: ')!!}
 			{!!Form::text('direccionUsuario', null,['class'=>'form-control', 'placeholder'=>'Ingresa tu dirección'])!!}
 		</div>
+		<div class="form-group">
+      {!!Form::label('Teléfono: ')!!}
+      {!!Form::text('telefonoUsuario', null,['class'=>'form-control', 'placeholder'=>'Ingresa tu teléfono'])!!}
+    </div>
+		<div class="form-group">
+      {!!Form::label('Página Web: ')!!}
+      {!!Form::text('webPageUsuario', null,['class'=>'form-control', 'placeholder'=>'Ingresa tu página web'])!!}
+    </div>
 		<button class="btn btn-success">Registrar</button>
 
 	{!!Form::close()!!}

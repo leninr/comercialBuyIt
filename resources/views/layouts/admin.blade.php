@@ -91,7 +91,7 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!!URL::to('/usuario/create')!!}"><i class="fa fa-plus fa-fw"></i>Crear</a>
+                                    <a href="{!!URL::to('/register')!!}"><i class="fa fa-plus fa-fw"></i>Crear</a>
                                 </li>
                                 <li>
                                     <a href="{!!URL::to('/usuario')!!}"><i class="fa fa-edit fa-fw"></i>Ver y Editar</a>

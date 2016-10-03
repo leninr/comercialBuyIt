@@ -6,6 +6,10 @@ use comercialBuyIt\User;
 use Validator;
 use comercialBuyIt\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use comercialBuyIt\Ciudad;
+use Illuminate\Http\Request;
+use comercialBuyIt\Http\Requests;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -48,9 +52,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'name' => 'required|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'nombres' => 'required|max:255',
+            'apellidos' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'ciudad' => 'required',
+            'direccion' => 'required|max:255',
+            'telefono' => 'required|max:7',
+            'rate' => '',
+            'webPage' => 'required|max:255',
         ]);
     }
 
@@ -64,8 +75,35 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'nombresUsuario' => $data['nombres'],
+            'apellidosUsuario' => $data['apellidos'],
+            'email' => $data['email'],
+            'idCiudadUsuario' => $data['ciudad'],
+            'direccionUsuario' => $data['direccion'],
+            'telefonoUsuario' => $data['telefono'],
+            'rateUsuario' => $data['rate'],
+            'webPageUsuario' => $data['webPage'],
         ]);
     }
+
+
+   public function register(Request $request)
+   {
+       $this->validator($request->all())->validate();
+
+       event(new Registered($user = $this->create($request->all())));
+
+       $this->guard()->login($user);
+
+       return redirect($this->redirectPath());
+   }
+
+
+  public function showRegistrationForm()
+  {
+
+      $cities = Ciudad::All();
+      return view('auth.register',compact('cities'));
+  }
 }

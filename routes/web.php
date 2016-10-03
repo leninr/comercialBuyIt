@@ -17,11 +17,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin', 'ControladorFrontal@admin');
-
 Route::resource('usuario','ControladorUsuario');
 Route::resource('producto','ControladorProducto');
 
-Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
+Route::get('admin', ['middleware' => ['auth', 'admin'], function() {
     return 'ControladorFrontal@admin';
 }]);
