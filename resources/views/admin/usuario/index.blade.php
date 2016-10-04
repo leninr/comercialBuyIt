@@ -15,6 +15,7 @@
 				<th>Teléfono</th>
 				<th>Rate</th>
 				<th>Página Web</th>
+				<th>Administrador?</th>
         <th>Operación</th>
       </thead>
       <?php foreach ($users as $user): ?>
@@ -32,6 +33,11 @@
 					<td>{{$user->telefonoUsuario}}</td>
 					<td>{{$user->rateUsuario}}</td>
 					<td>{{$user->webPageUsuario}}</td>
+					<?php if ($user->isAdmin == '1'): ?>
+							<td>Si</td>
+					<?php else: ?>
+							<td>No</td>
+					<?php endif; ?>
           <td>
             {!!link_to_route('usuario.edit', $title = 'Editar', $parameters = $user->idUsuario, $attributes = ['class' => 'btn btn-primary']);!!}
           </td>

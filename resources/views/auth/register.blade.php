@@ -160,6 +160,21 @@
           </div>
       </div>
 
+			<div class="form-group{{ $errors->has('isAdmin') ? ' has-error' : '' }}">
+          <label for="isAdmin" class="col-md-4 control-label">Es Administrador?</label><br>
+
+          <div class="col-md-6">
+							<input id="isAdmin" type="radio" value="1" name="isAdmin"> Si <br>
+              <input id="isAdmin" type="radio" value="0" checked name="isAdmin"> No <br>
+
+              @if ($errors->has('isAdmin'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('isAdmin') }}</strong>
+                  </span>
+              @endif
+          </div>
+      </div>
+
       <div class="form-group">
           <div class="col-md-6 col-md-offset-4">
               <button type="submit" class="btn btn-success">

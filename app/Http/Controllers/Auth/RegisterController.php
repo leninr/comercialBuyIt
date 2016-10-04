@@ -40,7 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('admin');
     }
 
     /**
@@ -62,6 +62,7 @@ class RegisterController extends Controller
             'telefono' => 'required|max:7',
             'rate' => '',
             'webPage' => 'required|max:255',
+            'isAdmin' => '',
         ]);
     }
 
@@ -84,6 +85,7 @@ class RegisterController extends Controller
             'telefonoUsuario' => $data['telefono'],
             'rateUsuario' => $data['rate'],
             'webPageUsuario' => $data['webPage'],
+            'isAdmin' => $data['isAdmin'],
         ]);
     }
 
