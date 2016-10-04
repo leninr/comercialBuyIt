@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'ControladorFrontal@main');
+Route::get('/', 'ControladorFrontal@main')->name('/');
 
 Auth::routes();
 
@@ -20,6 +20,11 @@ Route::get('/home', 'HomeController@index');
 Route::resource('usuario','ControladorUsuario');
 Route::resource('producto','ControladorProducto');
 
-Route::get('admin', ['middleware' => ['auth', 'admin'], function() {
-    return 'ControladorFrontal@admin';
-}]);
+Route::group(['middleware' => 'comercialBuyIt\Http\Middleware\Admin'], function()
+{
+    Route::get('/admin', function()
+    {
+        return view('admin.menuAdmin');
+    });
+
+});

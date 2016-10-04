@@ -16,12 +16,16 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && Auth::user()->isAdmin() )
+        if ( Auth::check() && $request->user()->isAdmin != '1' )
         {
-            return view('admin/menuAdmin');
+            return redirect('/');
+        }
+        else if ( !Auth::check() ) {
+
+            return redirect('login');
         }
         else {
-            return view('/');
+            return $next($request);
         }
     }
 }
