@@ -32,11 +32,12 @@
         </div>
         <!-- /.navbar-header -->
 
+        @include('alerts.success')
         <ul class="nav navbar-top-links navbar-right">
             <!-- Authentication Links -->
             @if (Auth::guest())
                 <li><a href="{{ url('/login') }}">Login</a></li>
-                <li><a href="{{ url('/register') }}">Registrar</a></li>
+                <li><a href="/usuario/create">Registrar</a></li>
             @else
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

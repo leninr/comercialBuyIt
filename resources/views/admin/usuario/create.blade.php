@@ -1,10 +1,15 @@
-@extends('layouts.admin')
+@extends('layouts.maestra')
 	@section('contenido')
 
 	@include('alerts.request')
+
+	<div class="container-fluid">
+			<div class="row">
+					<div class="col-lg-12">
 	<h1 class="page-header">Crear Usuario</h1>
 
 	{!!Form::open(['route'=>'usuario.store', 'method'=>'POST'])!!}
+
 		<div class="form-group">
 			{!!Form::label('Username: ')!!}
 			{!!Form::text('name', null,['class'=>'form-control', 'placeholder'=>'Ingresa el nombre de usuario'])!!}
@@ -46,7 +51,9 @@
       {!!Form::text('webPageUsuario', null,['class'=>'form-control', 'placeholder'=>'Ingresa tu página web'])!!}
     </div>
 		<button class="btn btn-success">Registrar</button>
-
+	</div>
+	</div>
+	</div>
 	{!!Form::close()!!}
 	<br>
 

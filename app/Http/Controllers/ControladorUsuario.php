@@ -12,6 +12,12 @@ use comercialBuyIt\Http\Requests;
 
 class ControladorUsuario extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->only('create', 'edit');
+        $this->middleware('admin')->only('index');
+    }
+
     public function index(){
       // Solo elementos eliminados
       //$users = Usuario::onlyTrashed()->paginate(10);
@@ -34,22 +40,24 @@ class ControladorUsuario extends Controller
     public function show($id){
     }
 
-    public function store(UsuarioCreateRequest $request){
+    public function store(Request $request){
 
         User::create([
           'name' => $request->input('name'),
-          'password' => $request->input('password'),
+          'password' => bcrypt($request->input('password')),
           'nombresUsuario' => $request->input('nombresUsuario'),
           'apellidosUsuario' => $request->input('apellidosUsuario'),
           'email' => $request->input('email'),
           'direccionUsuario' => $request->input('direccionUsuario'),
           'idCiudadUsuario' => $request->input('idCiudadUsuario'),
+          'telefonoUsuario' => $request->input('telefonoUsuario'),
+          'webPageUsuario' => $request->input('webPageUsuario'),
         ]);
 
-        return redirect('/usuario')->with('message','Usuario Ingresado Correctamente');
+        return redirect('/')->with('message','Usuario Ingresado Correctamente');
     }
 
-    public function update($id, UsuarioUpdateRequest $request){
+    public function update($id, Request $request){
       $user = User::find($id);
       $user->fill($request->all());
       $user->save();

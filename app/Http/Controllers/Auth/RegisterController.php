@@ -98,7 +98,7 @@ class RegisterController extends Controller
 
        $this->guard()->login($user);
 
-       return redirect($this->redirectPath());
+       return redirect('/usuario')->with('message','Usuario Ingresado Correctamente');
    }
 
 
