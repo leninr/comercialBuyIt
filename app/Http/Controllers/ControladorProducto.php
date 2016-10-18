@@ -11,6 +11,7 @@ use comercialBuyIt\Http\Requests;
 use comercialBuyIt\Http\Requests\ProductoCreateRequest;
 use comercialBuyIt\Http\Requests\ProductoUpdateRequest;
 use Illuminate\Support\Facades\Input;
+use Carbon\Carbon;
 
 class ControladorProducto extends Controller
 {
@@ -26,7 +27,7 @@ class ControladorProducto extends Controller
       return view('producto/create',compact('types'));
     }
 
-    public function store(ProductoCreateRequest $request){
+    public function store(Request $request){
 
       /*$file = Input::file('pic');
       $filename = $request->file('pic')->getClientOriginalName();*/
@@ -44,9 +45,16 @@ class ControladorProducto extends Controller
 
 
         Producto::create([
-          'descripcionProducto' => $request->input('descripcionProducto'),
-          'idTipoProducto' => $request->input('idTipoProducto'),
+          'nombreProducto' => $request->input('nombreProducto'),
           'imagenProducto' => $filename,
+          'stockProducto' => $request->input('stockProducto'),
+          'fechaProducto' => Carbon::now()->toDateString(),
+          'idTipoProducto' => $request->input('idTipoProducto'),
+          'precioProducto' => $request->input('precioProducto'),
+          'estadoProducto' => $request->input('estadoProducto'),
+          'idUsuarioProducto' => $request->input('idUsuarioProducto'),
+          'descripcionPagoProducto' => $request->input('descripcionPagoProducto'),
+          'descripcionEntregaProducto' => $request->input('descripcionEntregaProducto'),
         ]);
 
         return redirect('/producto')->with('message','Producto Ingresado Correctamente');

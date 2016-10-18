@@ -1,5 +1,5 @@
 @extends('layouts.maestra')
-@section('content')
+@section('contenido')
 
 @include('alerts.success')
 <div class="container-fluid">

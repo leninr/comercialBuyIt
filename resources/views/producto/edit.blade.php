@@ -1,4 +1,4 @@
 @extends('layouts.maestra')
-@section('content')
+@section('contenido')
 
 @stop
