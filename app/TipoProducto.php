@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoProducto extends Model
 {
-    protected $table = "tiposProducto";
+    protected $table = "tipo_productos";
     public $primaryKey  = 'idTipoProducto';
 }

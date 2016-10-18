@@ -5,7 +5,7 @@ namespace comercialBuyIt\Http\Controllers;
 use Illuminate\Http\Request;
 use Image;
 use comercialBuyIt\Producto;
-use comercialBuyIt\TiposProducto;
+use comercialBuyIt\TipoProducto;
 use Session;
 use comercialBuyIt\Http\Requests;
 use comercialBuyIt\Http\Requests\ProductoCreateRequest;
@@ -17,12 +17,12 @@ class ControladorProducto extends Controller
     public function index(){
 
       $products = Producto::paginate(10);
-      $types = TiposProducto::All();
+      $types = TipoProducto::All();
       return view('producto/index', compact('products'),compact('types'));
     }
 
     public function create(){
-      $types = TiposProducto::All();
+      $types = TipoProducto::All();
       return view('producto/create',compact('types'));
     }
 

@@ -18,7 +18,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('usuario','ControladorUsuario');
-Route::resource('producto','ControladorProducto');
+
 
 Route::group(['middleware' => 'comercialBuyIt\Http\Middleware\Admin'], function()
 {
@@ -27,4 +27,9 @@ Route::group(['middleware' => 'comercialBuyIt\Http\Middleware\Admin'], function(
         return view('admin.menuAdmin');
     });
 
+});
+
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::resource('producto','ControladorProducto');
 });
