@@ -19,7 +19,6 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('usuario','ControladorUsuario');
 
-
 Route::group(['middleware' => 'comercialBuyIt\Http\Middleware\Admin'], function()
 {
     Route::get('/admin', function()
