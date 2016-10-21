@@ -28,7 +28,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">buyIt!</a>
+            <a class="navbar-brand" href="/"><i class="fa fa-dashboard fa-fw"></i> buyIt!</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -39,14 +39,19 @@
                 <li><a href="{{ url('/login') }}">Login</a></li>
                 <li><a href="/usuario/create">Registrar</a></li>
             @else
-                <li><a href="/producto/create">Vender</a></li>
+                <li><a href="/producto/create">
+                  <i class="fa fa-money fa-fw"></i>
+                  Vender
+                </a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        <i class="fa fa-user fa-fw"></i>
+                        {{ Auth::user()->name }}
+                        <i class="fa fa-caret-down"></i>
                     </a>
-
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil</a></li>
+                        <li><a href="/misProductos"><i class="fa fa-list-alt fa-fw"></i> Mis Productos</a></li>
                         <li class="divider"></li>
                         <li>
                             <a href="{{ url('/logout') }}"

@@ -33,4 +33,5 @@ Route::resource('producto', 'ControladorProducto');
 Route::group(['middleware' => 'auth'], function()
 {
     Route::get('/producto/create', 'ControladorProducto@create');
+    Route::get('/misProductos', 'ControladorProducto@misProductos');
 });

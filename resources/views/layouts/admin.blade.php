@@ -45,10 +45,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">buyIt!</a>
+                <a class="navbar-brand" href="/"><i class="fa fa-dashboard fa-fw"></i> buyIt!</a>
             </div>
             <!-- /.navbar-header -->
-            
+
             @include('alerts.success')
 
             <ul class="nav navbar-top-links navbar-right">
@@ -59,7 +59,9 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                          <i class="fa fa-user fa-fw"></i>
+                          {{ Auth::user()->name }}
+                          <i class="fa fa-caret-down"></i>
                         </a>
 
                         <ul class="dropdown-menu dropdown-user">

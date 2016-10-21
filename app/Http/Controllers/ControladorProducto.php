@@ -18,7 +18,6 @@ use Auth;
 class ControladorProducto extends Controller
 {
     public function index(){
-
       $products = Producto::paginate(10);
       $types = TipoProducto::All();
       $users = User::All();
@@ -28,6 +27,13 @@ class ControladorProducto extends Controller
     public function create(){
       $types = TipoProducto::All();
       return view('producto/create',compact('types'));
+    }
+
+    public function misProductos(){
+      $idUser = auth()->user()->idUsuario;
+      $myproducts = Producto::where('idUsuarioProducto', '=',$idUser)->paginate(10);
+      $types = TipoProducto::All();
+      return view('producto/misProductos', compact('myproducts', 'types'));
     }
 
     public function store(Request $request){
@@ -78,5 +84,21 @@ class ControladorProducto extends Controller
     }
 
     public function show($id){
+    }
+
+
+    public function edit($id){
+      $product = Producto::find($id);
+      $types = TipoProducto::All();
+      return view('producto/edit', ['product'=>$product],compact('types'));
+    }
+
+
+    public function update($id, Request $request){
+      $product = Producto::find($id);
+      $product->fill($request->all());
+      $product->save();
+
+      return redirect('/misProductos')->with('message','Producto Editado Correctamente');
     }
 }
