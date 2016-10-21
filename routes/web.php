@@ -28,7 +28,9 @@ Route::group(['middleware' => 'comercialBuyIt\Http\Middleware\Admin'], function(
 
 });
 
+Route::resource('producto', 'ControladorProducto');
+
 Route::group(['middleware' => 'auth'], function()
 {
-    Route::resource('producto','ControladorProducto');
+    Route::get('/producto/create', 'ControladorProducto@create');
 });

@@ -48,6 +48,8 @@
                 <a class="navbar-brand" href="/">buyIt!</a>
             </div>
             <!-- /.navbar-header -->
+            
+            @include('alerts.success')
 
             <ul class="nav navbar-top-links navbar-right">
                 <!-- Authentication Links -->

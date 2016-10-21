@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Image;
 use comercialBuyIt\Producto;
 use comercialBuyIt\TipoProducto;
+use comercialBuyIt\User;
 use Session;
 use comercialBuyIt\Http\Requests;
 use comercialBuyIt\Http\Requests\ProductoCreateRequest;
 use comercialBuyIt\Http\Requests\ProductoUpdateRequest;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
+use Auth;
 
 class ControladorProducto extends Controller
 {
@@ -19,7 +21,8 @@ class ControladorProducto extends Controller
 
       $products = Producto::paginate(10);
       $types = TipoProducto::All();
-      return view('producto/index', compact('products'),compact('types'));
+      $users = User::All();
+      return view('producto/index', compact('products', 'types', 'users'));
     }
 
     public function create(){
@@ -39,6 +42,8 @@ class ControladorProducto extends Controller
       Image::make($image->getRealPath())->resize(200, 200)->save($path);
 
 
+      $idUser = auth()->user()->idUsuario;
+
        /*$img = Image::make(Input::file('pic')->getClientOriginalName());
        $img->resize(320, 240);
        $img->save('public/imgs/time() . '.' . bar.jpg');*/
@@ -52,7 +57,7 @@ class ControladorProducto extends Controller
           'idTipoProducto' => $request->input('idTipoProducto'),
           'precioProducto' => $request->input('precioProducto'),
           'estadoProducto' => $request->input('estadoProducto'),
-          'idUsuarioProducto' => $request->input('idUsuarioProducto'),
+          'idUsuarioProducto' => $idUser,
           'descripcionPagoProducto' => $request->input('descripcionPagoProducto'),
           'descripcionEntregaProducto' => $request->input('descripcionEntregaProducto'),
         ]);

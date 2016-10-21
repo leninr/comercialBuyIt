@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 	@section('contenido')
 
-@include('alerts.success')
-
 <h1 class="page-header">Ver y Editar Usuarios</h1>
   <table width="100%" class="table table-hover" id="dataTables-example">
       <thead>

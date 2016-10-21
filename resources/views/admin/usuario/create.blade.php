@@ -44,7 +44,7 @@
 		</div>
 		<div class="form-group">
       {!!Form::label('Teléfono: ')!!}
-      {!!Form::text('telefonoUsuario', null,['class'=>'form-control', 'placeholder'=>'Ingresa tu teléfono'])!!}
+      {!!Form::number('telefonoUsuario', null,['class'=>'form-control', 'placeholder'=>'Ingresa tu teléfono'])!!}
     </div>
 		<div class="form-group">
       {!!Form::label('Página Web: ')!!}
