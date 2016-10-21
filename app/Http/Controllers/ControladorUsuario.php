@@ -9,12 +9,14 @@ use Session;
 use comercialBuyIt\User;
 use comercialBuyIt\Ciudad;
 use comercialBuyIt\Http\Requests;
+use Auth;
 
 class ControladorUsuario extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest')->only('create', 'edit');
+        $this->middleware('guest')->only('create');
+        $this->middleware('auth')->only('edit');
         $this->middleware('admin')->only('index');
     }
 
@@ -32,6 +34,13 @@ class ControladorUsuario extends Controller
     }
 
     public function edit($id){
+      $user = User::find($id);
+      $cities = Ciudad::All();
+      return view('auth/edit', ['user'=>$user],compact('cities'));
+    }
+
+    public function editMe(){
+      $id = auth()->user()->idUsuario;
       $user = User::find($id);
       $cities = Ciudad::All();
       return view('admin/usuario/edit', ['user'=>$user],compact('cities'));
@@ -62,7 +71,12 @@ class ControladorUsuario extends Controller
       $user->fill($request->all());
       $user->save();
 
-      return redirect('/usuario')->with('message','Usuario Editado Correctamente');
+      if (auth()->user()->isAdmin == 1){
+        return redirect('/usuario')->with('message','Usuario Editado Correctamente');
+      }
+      else {
+        return redirect('/')->with('message','Editaste tu Perfil Correctamente');        
+      }
     }
 
     public function destroy($id){

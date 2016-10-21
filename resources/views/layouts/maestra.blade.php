@@ -37,8 +37,14 @@
             <!-- Authentication Links -->
             @if (Auth::guest())
                 <li><a href="{{ url('/login') }}">Login</a></li>
-                <li><a href="/usuario/create">Registrar</a></li>
+                <li><a href="/usuario/create">Registrarse</a></li>
             @else
+                @if (Auth::user()->isAdmin == 1)
+                  <li><a href="/admin">
+                    <i class="fa fa-desktop fa-fw"></i>
+                    Administrar
+                  </a></li>
+                @endif
                 <li><a href="/producto/create">
                   <i class="fa fa-money fa-fw"></i>
                   Vender
@@ -50,7 +56,7 @@
                         <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil</a></li>
+                        <li><a href="/editMe"><i class="fa fa-user fa-fw"></i> Perfil</a></li>
                         <li><a href="/misProductos"><i class="fa fa-list-alt fa-fw"></i> Mis Productos</a></li>
                         <li class="divider"></li>
                         <li>

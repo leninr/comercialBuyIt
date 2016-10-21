@@ -55,7 +55,7 @@
                 <!-- Authentication Links -->
                 @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Registrar</a></li>
+                    <li><a href="{{ url('/register') }}">Registrarse</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -65,7 +65,7 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil</a></li>
+                            <li><a href="/editMe"><i class="fa fa-user fa-fw"></i> Perfil</a></li>
                             <li class="divider"></li>
                             <li>
                                 <a href="{{ url('/logout') }}"
