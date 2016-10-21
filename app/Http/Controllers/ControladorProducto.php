@@ -31,9 +31,21 @@ class ControladorProducto extends Controller
 
     public function misProductos(){
       $idUser = auth()->user()->idUsuario;
-      $myproducts = Producto::where('idUsuarioProducto', '=',$idUser)->paginate(10);
+      $myproducts = Producto::where('idUsuarioProducto', '=',$idUser)->orderBy('fechaProducto')->paginate(10);
       $types = TipoProducto::All();
       return view('producto/misProductos', compact('myproducts', 'types'));
+    }
+
+    public function edit($id){
+      $product = Producto::find($id);
+      $types = TipoProducto::All();
+      return view('producto/edit', ['product'=>$product],compact('types'));
+    }
+
+    public function ver($id){
+      $product = Producto::find($id);
+      $types = TipoProducto::All();
+      return view('producto/ver', ['product'=>$product],compact('types'));
     }
 
     public function store(Request $request){
@@ -68,7 +80,7 @@ class ControladorProducto extends Controller
           'descripcionEntregaProducto' => $request->input('descripcionEntregaProducto'),
         ]);
 
-        return redirect('/producto')->with('message','Producto Ingresado Correctamente');
+        return redirect('/misProductos')->with('message','Producto Ingresado Correctamente');
     }
 
     public function showPicture($id)
@@ -84,13 +96,6 @@ class ControladorProducto extends Controller
     }
 
     public function show($id){
-    }
-
-
-    public function edit($id){
-      $product = Producto::find($id);
-      $types = TipoProducto::All();
-      return view('producto/edit', ['product'=>$product],compact('types'));
     }
 
 

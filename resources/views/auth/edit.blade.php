@@ -12,10 +12,6 @@
       {!!Form::text('name', null,['class'=>'form-control', 'placeholder'=>'Ingresa el nombre de usuario'])!!}
     </div>
     <div class="form-group">
-      <label for="">Password: </label>
-      <input name="password" type="password" class="form-control">
-    </div>
-    <div class="form-group">
       {!!Form::label('Nombres: ')!!}
       {!!Form::text('nombresUsuario', null,['class'=>'form-control', 'placeholder'=>'Ingresa tus nombres'])!!}
     </div>

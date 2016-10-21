@@ -29,7 +29,13 @@
 					<?php endforeach; ?>
           <td>{{$user->direccionUsuario}}</td>
 					<td>{{$user->telefonoUsuario}}</td>
-					<td>{{$user->rateUsuario}}</td>
+					<?php if ($user->rateUsuario == 0): ?>
+						<td> - </td>
+					<?php else: ?>
+						<?php for ($i = 0; $i < $user->rateUsuario; $i++) {?>
+							<td class="fa fa-star"></td>
+						<?php } ?>
+					<?php endif; ?>
 					<td>{{$user->webPageUsuario}}</td>
 					<?php if ($user->isAdmin == '1'): ?>
 							<td>Si</td>

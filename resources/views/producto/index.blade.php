@@ -9,6 +9,7 @@
     </div>
     <table width="100%" class="table table-hover" id="dataTables-example">
         <thead>
+          <th>Ver</th>
           <th>Nombre</th>
           <th>Rate</th>
           <th>Imagen</th>
@@ -23,6 +24,9 @@
         </thead>
         <?php foreach ($products as $product): ?>
           <tbody>
+            <td>
+              {!!link_to_route('producto.ver', $title = 'Ver', $parameters = $product->idProducto, $attributes = ['class' => 'btn btn-primary']);!!}
+            </td>
             <td>{{$product->nombreProducto}}</td>
             <?php if ($product->rateProducto == 0): ?>
               <td> - </td>
