@@ -42,12 +42,6 @@ class ControladorProducto extends Controller
       return view('producto/edit', ['product'=>$product],compact('types'));
     }
 
-    public function ver($id){
-      $product = Producto::find($id);
-      $types = TipoProducto::All();
-      return view('producto/ver', ['product'=>$product],compact('types'));
-    }
-
     public function store(Request $request){
 
       /*$file = Input::file('pic');
@@ -96,6 +90,9 @@ class ControladorProducto extends Controller
     }
 
     public function show($id){
+      $product = Producto::find($id);
+      $types = TipoProducto::All();
+      return view('producto/ver', ['product'=>$product],compact('types'));
     }
 
 

@@ -1,23 +1,11 @@
 @extends('layouts.maestra')
 @section('contenido')
 
-<div class="row columns">
-      <nav aria-label="You are here:" role="navigation">
-        <ul class="breadcrumbs">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Features</a></li>
-          <li class="disabled">Gene Splicing</li>
-          <li>
-            <span class="show-for-sr">Current: </span> Cloning
-          </li>
-        </ul>
-      </nav>
-    </div>
-
+<div class="container-fluid">
     <div class="row">
       <div class="medium-6 columns">
-        <img class="thumbnail" src="http://placehold.it/650x350">
-        <div class="row small-up-4">
+        <img src="{{ asset('imgs/' . $product->imagenProducto) }}" height="350" width="650";>
+        <!--<div class="row small-up-4">
           <div class="column">
             <img class="thumbnail" src="http://placehold.it/250x200">
           </div>
@@ -30,31 +18,23 @@
           <div class="column">
             <img class="thumbnail" src="http://placehold.it/250x200">
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="medium-6 large-5 columns">
-        <h3>My Awesome Product</h3>
-        <p>Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in.</p>
+        <h3>{{$product->nombreProducto}}</h3>
+        <?php if ($product->rateProducto == 0): ?>
+          <p> - </p>
+        <?php else: ?>
+          <?php for ($i = 0; $i < $product->rateProducto; $i++) {?>
+            <p class="fa fa-star"></p>
+          <?php } ?>
+        <?php endif; ?></p>
 
-        <label>Size
-        <select>
-          <option value="husker">Small</option>
-          <option value="starbuck">Medium</option>
-          <option value="hotdog">Large</option>
-          <option value="apollo">Yeti</option>
-        </select>
-        </label>
+        <h4>Precio: $ {{$product->precioProducto}}</h4>
 
-        <div class="row">
-          <div class="small-3 columns">
-            <label for="middle-label" class="middle">Quantity</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" id="middle-label" placeholder="One fish two fish">
-          </div>
-        </div>
-
-        <a href="#" class="button large expanded">Buy Now</a>
+        <button class="fa fa-shopping-cart btn btn-primary btn-lg btn-block"> Comprar</button>
+        <br>
+        <br>
 
         <div class="small secondary expanded button-group">
             <a class="button">Facebook</a>
@@ -153,5 +133,5 @@
         <li class="float-right">Copyright 2016</li>
       </ul>
     </div>
-
+</div>
 @stop

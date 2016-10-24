@@ -25,7 +25,7 @@
         <?php foreach ($products as $product): ?>
           <tbody>
             <td>
-              {!!link_to_route('producto.ver', $title = 'Ver', $parameters = $product->idProducto, $attributes = ['class' => 'btn btn-primary']);!!}
+              {!!link_to_route('producto.show', $title = 'Ver', $parameters = $product->idProducto, $attributes = ['class' => 'btn btn-primary']);!!}
             </td>
             <td>{{$product->nombreProducto}}</td>
             <?php if ($product->rateProducto == 0): ?>
