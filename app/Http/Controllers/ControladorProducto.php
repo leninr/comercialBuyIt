@@ -92,7 +92,8 @@ class ControladorProducto extends Controller
     public function show($id){
       $product = Producto::find($id);
       $types = TipoProducto::All();
-      return view('producto/ver', ['product'=>$product],compact('types'));
+      $users = User::All();
+      return view('producto/ver', ['product'=>$product],compact('types', 'users'));
     }
 
 

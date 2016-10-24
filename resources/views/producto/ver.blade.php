@@ -23,6 +23,13 @@
       </div>
       <div class="medium-6 large-5 columns">
         <h3>{{$product->nombreProducto}}</h3>
+        <h6> por
+          <?php foreach ($users as $user): ?>
+            <?php if ($user->idUsuario == $product->idUsuarioProducto): ?>
+              <td>{{$user->name}}</td>
+            <?php endif; ?>
+          <?php endforeach; ?>
+          <h6>
         <?php foreach ($types as $type): ?>
           <?php if ($type->idTipoProducto == $product->idTipoProducto): ?>
             <h5>{{$type->descripcionTipoProducto}}</h5>
@@ -36,7 +43,9 @@
             <p class="fa fa-star"></p>
           <?php } ?>
         <?php endif; ?></p>
-
+        
+        <hr>
+        <br>
         <h5> En Stock: {{$product->stockProducto}}</h5>
         <h5> {{$product->estadoProducto}}</h5>
         <h4>Precio: $ {{$product->precioProducto}}</h4>
