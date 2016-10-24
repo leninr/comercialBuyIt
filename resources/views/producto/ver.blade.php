@@ -2,10 +2,11 @@
 @section('contenido')
 
 <div class="container-fluid">
+  <br>
     <div class="row">
       <div class="medium-6 columns">
-        <img src="{{ asset('imgs/' . $product->imagenProducto) }}" height="350" width="650";>
-        <!--<div class="row small-up-4">
+        <img src="{{ asset('imgs/' . $product->imagenProducto) }}" class="thumbnail" height="350" width="650">
+        <div class="row small-up-4">
           <div class="column">
             <img class="thumbnail" src="http://placehold.it/250x200">
           </div>
@@ -18,10 +19,16 @@
           <div class="column">
             <img class="thumbnail" src="http://placehold.it/250x200">
           </div>
-        </div>-->
+        </div>
       </div>
       <div class="medium-6 large-5 columns">
         <h3>{{$product->nombreProducto}}</h3>
+        <?php foreach ($types as $type): ?>
+          <?php if ($type->idTipoProducto == $product->idTipoProducto): ?>
+            <h5>{{$type->descripcionTipoProducto}}</h5>
+          <?php endif; ?>
+        <?php endforeach; ?>
+
         <?php if ($product->rateProducto == 0): ?>
           <p> - </p>
         <?php else: ?>
@@ -30,6 +37,8 @@
           <?php } ?>
         <?php endif; ?></p>
 
+        <h5> En Stock: {{$product->stockProducto}}</h5>
+        <h5> {{$product->estadoProducto}}</h5>
         <h4>Precio: $ {{$product->precioProducto}}</h4>
 
         <button class="fa fa-shopping-cart btn btn-primary btn-lg btn-block"> Comprar</button>
@@ -45,93 +54,84 @@
     </div>
 
     <div class="column row">
-      <hr>
-      <ul class="tabs" data-tabs id="example-tabs">
-        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Reviews</a></li>
-        <li class="tabs-title"><a href="#panel2">Similar Products</a></li>
-      </ul>
-      <div class="tabs-content" data-tabs-content="example-tabs">
-        <div class="tabs-panel is-active" id="panel1">
-          <h4>Reviews</h4>
-          <div class="media-object stack-for-small">
-            <div class="media-object-section">
-              <img class="thumbnail" src="http://placehold.it/200x200">
-            </div>
-            <div class="media-object-section">
-              <h5>Mike Stevenson</h5>
-              <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
-            </div>
-          </div>
-          <div class="media-object stack-for-small">
-            <div class="media-object-section">
-              <img class="thumbnail" src="http://placehold.it/200x200">
-            </div>
-            <div class="media-object-section">
-              <h5>Mike Stevenson</h5>
-              <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you</p>
-            </div>
-          </div>
-          <div class="media-object stack-for-small">
-            <div class="media-object-section">
-              <img class="thumbnail" src="http://placehold.it/200x200">
-            </div>
-            <div class="media-object-section">
-              <h5>Mike Stevenson</h5>
-              <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you</p>
-            </div>
-          </div>
-          <label>
-            My Review
-            <textarea placeholder="None"></textarea>
-          </label>
-          <button class="button">Submit Review</button>
-        </div>
-        <div class="tabs-panel" id="panel2">
-          <div class="row medium-up-3 large-up-5">
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Other Product <small>$22</small></h5>
-              <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
-              <a href="#" class="button hollow tiny expanded">Buy Now</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Other Product <small>$22</small></h5>
-              <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
-              <a href="#" class="button hollow tiny expanded">Buy Now</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Other Product <small>$22</small></h5>
-              <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
-              <a href="#" class="button hollow tiny expanded">Buy Now</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Other Product <small>$22</small></h5>
-              <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
-              <a href="#" class="button hollow tiny expanded">Buy Now</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Other Product <small>$22</small></h5>
-              <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
-              <a href="#" class="button hollow tiny expanded">Buy Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <div class="panel-body">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs">
+              <li class="active"><a href="#Pago" data-toggle="tab">Forma de Pago</a>
+              </li>
+              <li><a href="#Entrega" data-toggle="tab">Forma de Entrega</a>
+              </li>
+              <li><a href="#FAQs" data-toggle="tab">FAQs</a>
+              </li>
+              <li><a href="#Recomendaciones" data-toggle="tab">Recomendaciones</a>
+              </li>
+          </ul>
 
-    <div class="row column">
-      <hr>
-      <ul class="menu">
-        <li>Yeti Store</li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li class="float-right">Copyright 2016</li>
-      </ul>
+          <!-- Tab panes -->
+          <div class="tab-content">
+              <div class="tab-pane fade in active" id="Pago">
+                <br>
+                  <p>{{$product->descripcionPagoProducto}}</p>
+              </div>
+
+              <div class="tab-pane fade" id="Entrega">
+                <br>
+                  <p>{{$product->descripcionEntregaProducto}}</p>
+              </div>
+
+              <div class="tab-pane fade" id="FAQs">
+                <br>
+                  <div class="media-object stack-for-small">
+                    <div class="media-object-section">
+                      <img class="thumbnail" src="http://placehold.it/200x200">
+                    </div>
+                    <div class="media-object-section">
+                      <h5>Mike Stevenson</h5>
+                      <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
+                    </div>
+                  </div>
+                  <div class="media-object stack-for-small">
+                    <div class="media-object-section">
+                      <img class="thumbnail" src="http://placehold.it/200x200">
+                    </div>
+                    <div class="media-object-section">
+                      <h5>Mike Stevenson</h5>
+                      <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you</p>
+                    </div>
+                  </div>
+                  <div class="media-object stack-for-small">
+                    <div class="media-object-section">
+                      <img class="thumbnail" src="http://placehold.it/200x200">
+                    </div>
+                    <div class="media-object-section">
+                      <h5>Mike Stevenson</h5>
+                      <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you</p>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="tab-pane fade" id="Recomendaciones">
+                  <div class="row medium-up-3 large-up-5">
+                    <?php $cont=0; ?>
+                    <?php foreach ($types as $type): ?>
+          						<?php if ($type->idTipoProducto == $product->idTipoProducto):
+                                if ($cont<8): ?>
+                                  <div class="column">
+                                    <img class="thumbnail" src="{{ asset('imgs/' . $product->imagenProducto) }}" height="350" width="250">
+                                    <h5>{{$product->nombreProducto}} <small>$ {{$product->precioProducto}}</small></h5>
+                                    <p>{{$product->estadoProducto}}</p>
+                                    {!!link_to_route('producto.show', $title = 'Ver', $parameters = $product->idProducto, $attributes = ['class' => 'button hollow tiny expanded']);!!}
+                                  </div>
+                						<?php endif;
+                                  $cont++;
+                                endif; ?>
+          					<?php endforeach; ?>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
     </div>
 </div>
 @stop
