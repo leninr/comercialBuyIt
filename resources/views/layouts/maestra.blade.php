@@ -16,6 +16,23 @@
 
         <!-- Custom Fonts -->
         {!!Html::style('css/font-awesome.min.css')!!}
+
+
+        <!-- Add jQuery library -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
+        <!-- Add fancyBox -->
+        <link rel="stylesheet" href="css/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+        <script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+        <!-- Optionally add helpers - button, thumbnail and/or media -->
+        <link rel="stylesheet" href="css/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+        <script type="text/javascript" src="js/jquery.fancybox-buttons.js?v=1.0.5"></script>
+        <script type="text/javascript" src="js/jquery.fancybox-media.js?v=1.0.6"></script>
+
+        <link rel="stylesheet" href="css/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+        <script type="text/javascript" src="js/jquery.fancybox-thumbs.js?v=1.0.7"></script>
   </head>
   <body>
 
@@ -122,8 +139,17 @@
 
         <!-- Custom Theme JavaScript -->
         {!!Html::script('js/sb-admin-2.js')!!}
+
+        <!-- Add mousewheel plugin (this is optional) -->
+        {!!Html::script('js/jquery.mousewheel-3.0.6.pack.js')!!}
+
     <script>
       $(document).foundation();
+    </script>
+    <script type="text/javascript">
+    	$(document).ready(function() {
+    		$(".fancybox").fancybox();
+    	});
     </script>
   </body>
 </html>

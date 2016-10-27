@@ -9,7 +9,7 @@
     </div>
     <table width="100%" class="table table-hover" id="dataTables-example">
         <thead>
-          <th>Imagen</th>
+          <th></th>
           <th>Nombre</th>
           <th>Rate</th>
           <th>Precio</th>

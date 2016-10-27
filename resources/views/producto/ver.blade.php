@@ -1,7 +1,7 @@
 @extends('layouts.maestra')
 @section('contenido')
 
-<div class="container-fluid">
+<div class="container-fluid" style="max-width:1000px;">
   <br>
     <div class="row">
       <div class="medium-6 columns">
@@ -43,7 +43,7 @@
             <p class="fa fa-star"></p>
           <?php } ?>
         <?php endif; ?></p>
-        
+
         <hr>
         <br>
         <h5> En Stock: {{$product->stockProducto}}</h5>

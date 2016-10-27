@@ -46,7 +46,7 @@
             <td>{{$product->descripcionPagoProducto}}</td>
             <td>{{$product->descripcionEntregaProducto}}</td>
             <td>
-              {!!link_to_route('producto.edit', $title = 'Editar', $parameters = $product->idProducto, $attributes = ['class' => 'btn btn-primary']);!!}
+              {!! link_to_route('producto.edit', $title = 'Editar', $parameters = $product->idProducto, $attributes = ['class' => 'btn btn-primary']);!!}
             </td>
 
           </tbody>
