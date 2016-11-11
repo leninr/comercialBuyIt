@@ -8,4 +8,8 @@ class TipoProducto extends Model
 {
     protected $table = "tipo_productos";
     public $primaryKey  = 'idTipoProducto';
+
+    protected $fillable = [
+        'descripcionTipoProducto', 'idTipoProductoPadre', 
+    ];
 }

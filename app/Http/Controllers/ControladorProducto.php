@@ -99,9 +99,41 @@ class ControladorProducto extends Controller
 
     public function update($id, Request $request){
       $product = Producto::find($id);
-      $product->fill($request->all());
+      //$product->fill($request->all());
+
+      //$image = $request->input('pic');
+      //$foto = $request->input('pic');
+      /*$image = $request(Input::file('pic'));
+
+      $filename  = time() . '.' . $image->getClientOriginalExtension();
+
+      $path = public_path('imgs/' . $filename);
+      Image::make($image->getRealPath())->resize(200, 200)->save($path);
+
+*/
+      $idUser = auth()->user()->idUsuario;
+
+      $product->fill([
+        'nombreProducto' => $request->input('nombreProducto'),
+        'imagenProducto' => $filename,
+        'stockProducto' => $request->input('stockProducto'),
+        'fechaProducto' => Carbon::now()->toDateString(),
+        'idTipoProducto' => $request->input('idTipoProducto'),
+        'precioProducto' => $request->input('precioProducto'),
+        'estadoProducto' => $request->input('estadoProducto'),
+        'idUsuarioProducto' => $idUser,
+        'descripcionPagoProducto' => $request->input('descripcionPagoProducto'),
+        'descripcionEntregaProducto' => $request->input('descripcionEntregaProducto'),
+      ]);
       $product->save();
 
       return redirect('/misProductos')->with('message','Producto Editado Correctamente');
+    }
+
+    public function destroy($id){
+
+      $product=Producto::find($id);
+      $product->delete();
+      return redirect('/misProductos')->with('message','Producto Eliminado Correctamente');
     }
 }

@@ -26,6 +26,7 @@ Route::group(['middleware' => 'comercialBuyIt\Http\Middleware\Admin'], function(
         return view('admin.menuAdmin');
     });
 
+    Route::resource('tipoProducto', 'ControladorTipoProducto');
 });
 
 Route::resource('producto', 'ControladorProducto');

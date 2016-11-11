@@ -72,6 +72,11 @@
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/register') }}">Registrarse</a></li>
                 @else
+
+                <li><a href="/producto/create">
+                  <i class="fa fa-money fa-fw"></i>
+                  Vender
+                </a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                           <i class="fa fa-user fa-fw"></i>
@@ -81,6 +86,7 @@
 
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="/editMe"><i class="fa fa-user fa-fw"></i> Perfil</a></li>
+                            <li><a href="/misProductos"><i class="fa fa-list-alt fa-fw"></i> Mis Productos</a></li>
                             <li class="divider"></li>
                             <li>
                                 <a href="{{ url('/logout') }}"
@@ -118,78 +124,31 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <!--<li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-ticket fa-fw"></i> Productos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
+                                    <a href="{!!URL::to('/producto/create')!!}"><i class="fa fa-plus fa-fw"></i>Crear</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
+                                    <a href="{!!URL::to('/producto')!!}"><i class="fa fa-edit fa-fw"></i>Ver</a>
                                 </li>
                             </ul>
-                            COMENTARIO /.nav-second-level
+                            <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-th-large fa-fw"></i> Tipos de Productos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Second Level Item</a>
+                                    <a href="{!!URL::to('/tipoProducto/create')!!}"><i class="fa fa-plus fa-fw"></i>Crear</a>
                                 </li>
                                 <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    COMENTARIO /.nav-third-level
+                                    <a href="{!!URL::to('/tipoProducto')!!}"><i class="fa fa-edit fa-fw"></i>Ver y Editar</a>
                                 </li>
                             </ul>
-                            COMENTARIO /.nav-second-level
+                            <!-- /.nav-second-level -->
                         </li>
-                        <li class="active">
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a class="active" href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            COMENTARIO /.nav-second-level
-                        </li>-->
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
