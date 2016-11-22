@@ -9,9 +9,9 @@
     </div>
     <table width="100%" class="table table-hover" id="dataTables-example">
         <thead>
+          <th></th>
           <th>Nombre</th>
           <th>Rate</th>
-          <th>Imagen</th>
           <th>Stock</th>
           <th>Fecha Publicado</th>
           <th>Tipo</th>
@@ -23,7 +23,10 @@
         </thead>
         <?php foreach ($myproducts as $product): ?>
           <tbody>
-            <td>{{$product->nombreProducto}}</td>
+            <td>
+              <a href="{!! route('producto.show', $parameters = $product->idProducto) !!}"><img src="{{ asset('imgs/' . $product->imagenProducto) }}" height="70" width="70"></a>
+            </td>
+            <td><a href="{!! route('producto.show', $parameters = $product->idProducto) !!}">{{$product->nombreProducto}}</a></td>
             <?php if ($product->rateProducto == 0): ?>
               <td> - </td>
             <?php else: ?>
@@ -31,9 +34,6 @@
                 <td class="fa fa-star"></td>
               <?php } ?>
             <?php endif; ?>
-            <td>
-              <img src="{{ asset('imgs/' . $product->imagenProducto) }}" height="40" width="40";>
-            </td>
             <td>{{$product->stockProducto}}</td>
             <td>{{$product->fechaProducto}}</td>
   					<?php foreach ($types as $type): ?>
