@@ -1,6 +1,8 @@
 @extends('layouts.maestra')
 @section('contenido')
 
+@include('alerts.shoppingCart')
+
 <div class="container-fluid" style="max-width:1000px;">
   <br>
     <div class="row">
@@ -50,7 +52,7 @@
         <h5> {{$product->estadoProducto}}</h5>
         <h4>Precio: $ {{$product->precioProducto}}</h4>
 
-        <button class="fa fa-shopping-cart btn btn-primary btn-lg btn-block"> Comprar</button>
+        {!!link_to_route('producto.addToCart', $title = '', $parameters = $product->idProducto, $attributes = ['class' => 'fa fa-shopping-cart btn btn-primary btn-lg btn-block']);!!}
         <br>
         <br>
 
@@ -142,5 +144,6 @@
       </div>
 
     </div>
+
 </div>
 @stop

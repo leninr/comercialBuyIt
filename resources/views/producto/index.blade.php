@@ -1,6 +1,9 @@
 @extends('layouts.maestra')
 @section('contenido')
 
+@include('alerts.request')
+@include('alerts.shoppingCart')
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
