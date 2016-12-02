@@ -36,27 +36,21 @@ class ControladorProducto extends Controller
       return view('producto/misProductos', compact('myproducts', 'types'));
     }
 
-    public function addToCart($id, Request $request){
-
+    public function addToCart($id){
 
         $product = Producto::find($id);
-
-        $new_product["product_code"] = $product->idProducto;
-        $new_product["product_name"] = $product->nombreProducto;
-        $new_product["product_price"] = $product->precioProducto;
+        session_start();
 
         if(isset($_SESSION["cart_products"])){  //if session var already exist
-            if(isset($_SESSION["cart_products"][$new_product['product_code']])) //check item exist in products array
+            if(isset($_SESSION["cart_products"][$product->idProducto])) //check item exist in products array
             {
-                unset($_SESSION["cart_products"][$new_product['product_code']]); //unset old array item
+                unset($_SESSION["cart_products"][$product->idProducto]); //unset old array item
             }
         }
-        $request->session()->push('cart_products', $id);
-        //$_SESSION["cart_products"][$new_product['product_code']] = $new_product; //update or create product session with new item
-        $products = Producto::paginate(10);
-        $types = TipoProducto::All();
-        $users = User::All();
-        return view('producto/index', compact('products', 'types', 'users'));
+
+        $_SESSION["cart_products"][$product->idProducto] = $product; //update or create product session with new item
+
+        return $this->index();
     }
 
 

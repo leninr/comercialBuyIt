@@ -17,6 +17,8 @@
         <!-- Custom Fonts -->
         {!!Html::style('css/font-awesome.min.css')!!}
 
+        {!!Html::style('css/style.css')!!}
+
 
         <!-- Add jQuery library -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>

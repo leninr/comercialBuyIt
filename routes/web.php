@@ -40,4 +40,8 @@ Route::group(['middleware' => 'auth'], function()
       'as' => 'producto.addToCart',
       'uses' => 'ControladorProducto@addToCart'
     ]);
+    Route::get('/updateDeleteCart/{idProducto}',[
+      'as' => 'producto.updateDeleteCart',
+      'uses' => 'ControladorProducto@updateDeleteCart'
+    ]);
 });
