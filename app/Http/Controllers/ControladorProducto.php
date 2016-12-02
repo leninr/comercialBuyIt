@@ -36,51 +36,6 @@ class ControladorProducto extends Controller
       return view('producto/misProductos', compact('myproducts', 'types'));
     }
 
-    public function addToCart($id, Request $request){
-
-
-        $product = Producto::find($id);
-
-        $new_product["product_code"] = $product->idProducto;
-        $new_product["product_name"] = $product->nombreProducto;
-        $new_product["product_price"] = $product->precioProducto;
-
-        if(isset($_SESSION["cart_products"])){  //if session var already exist
-            if(isset($_SESSION["cart_products"][$new_product['product_code']])) //check item exist in products array
-            {
-                unset($_SESSION["cart_products"][$new_product['product_code']]); //unset old array item
-            }
-        }
-        $request->session()->push('cart_products', $id);
-        //$_SESSION["cart_products"][$new_product['product_code']] = $new_product; //update or create product session with new item
-        $products = Producto::paginate(10);
-        $types = TipoProducto::All();
-        $users = User::All();
-        return view('producto/index', compact('products', 'types', 'users'));
-    }
-
-
-    public function updateDeleteCart(){
-      //update or remove items
-      if(isset($_POST["product_qty"]) || isset($_POST["remove_code"]))
-      {
-          //update item quantity in product session
-          if(isset($_POST["product_qty"]) && is_array($_POST["product_qty"])){
-              foreach($_POST["product_qty"] as $key => $value){
-                  if(is_numeric($value)){
-                      $_SESSION["cart_products"][$key]["product_qty"] = $value;
-                  }
-              }
-          }
-          //remove an item from product session
-          if(isset($_POST["remove_code"]) && is_array($_POST["remove_code"])){
-              foreach($_POST["remove_code"] as $key){
-                  unset($_SESSION["cart_products"][$key]);
-              }
-          }
-      }
-    }
-
     public function edit($id){
       $product = Producto::find($id);
       $types = TipoProducto::All();
