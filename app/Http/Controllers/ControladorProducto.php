@@ -12,6 +12,7 @@ use comercialBuyIt\Http\Requests;
 use comercialBuyIt\Http\Requests\ProductoCreateRequest;
 use comercialBuyIt\Http\Requests\ProductoUpdateRequest;
 use Illuminate\Support\Facades\Input;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Carbon\Carbon;
 use Auth;
 
@@ -39,40 +40,18 @@ class ControladorProducto extends Controller
     public function addToCart($id){
 
         $product = Producto::find($id);
-        session_start();
-
-        if(isset($_SESSION["cart_products"])){  //if session var already exist
-            if(isset($_SESSION["cart_products"][$product->idProducto])) //check item exist in products array
-            {
-                unset($_SESSION["cart_products"][$product->idProducto]); //unset old array item
-            }
-        }
-
-        $_SESSION["cart_products"][$product->idProducto] = $product; //update or create product session with new item
-
+        Cart::add($id, $product->nombreProducto, 1, $product->precioProducto);
         return $this->index();
     }
 
+    public function checkout(){
+      
+    }
 
-    public function updateDeleteCart(){
-      //update or remove items
-      if(isset($_POST["product_qty"]) || isset($_POST["remove_code"]))
-      {
-          //update item quantity in product session
-          if(isset($_POST["product_qty"]) && is_array($_POST["product_qty"])){
-              foreach($_POST["product_qty"] as $key => $value){
-                  if(is_numeric($value)){
-                      $_SESSION["cart_products"][$key]["product_qty"] = $value;
-                  }
-              }
-          }
-          //remove an item from product session
-          if(isset($_POST["remove_code"]) && is_array($_POST["remove_code"])){
-              foreach($_POST["remove_code"] as $key){
-                  unset($_SESSION["cart_products"][$key]);
-              }
-          }
-      }
+
+    public function vaciarCarro(){
+      Cart::destroy();
+      return $this->index();
     }
 
     public function edit($id){
@@ -154,7 +133,7 @@ class ControladorProducto extends Controller
 
       $product->fill([
         'nombreProducto' => $request->input('nombreProducto'),
-        'imagenProducto' => $filename,
+        //'imagenProducto' => $filename,
         'stockProducto' => $request->input('stockProducto'),
         'fechaProducto' => Carbon::now()->toDateString(),
         'idTipoProducto' => $request->input('idTipoProducto'),
