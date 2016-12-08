@@ -45,7 +45,8 @@ Route::group(['middleware' => 'auth'], function()
       'uses' => 'ControladorProducto@vaciarCarro'
     ]);
     Route::get('/checkout',[
-      'as' => 'producto.checkout',
-      'uses' => 'ControladorProducto@checkout'
+      'as' => 'venta.checkout',
+      'uses' => 'ControladorVenta@checkout'
     ]);
+    Route::resource('venta', 'ControladorVenta');
 });

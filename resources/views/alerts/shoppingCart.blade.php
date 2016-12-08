@@ -1,7 +1,9 @@
 
 <?php use Gloudemans\Shoppingcart\Facades\Cart;
+      use comercialBuyIt\Producto;
       if (Cart::count() != 0): ?>
 <div class="cart-view-table-front" id="view-cart">
+  <h4>Carro de Compras</h4>
   <table>
       <thead>
           <tr>
@@ -14,16 +16,17 @@
 
       <tbody>
 
-          <?php foreach(Cart::content() as $row) :?>
+        <?php foreach(Cart::content() as $row) :
+                $product = Producto::find($row->id);?>
 
               <tr>
                   <td><?php echo $row->qty; ?></td>
                   <td>
-                      <p><strong><?php echo $row->name; ?></strong></p>
+                      <p><strong><a href="{!! route('producto.show', $parameters = $product->idProducto) !!}"><?php echo $row->name; ?></strong></p>
                       <p><?php echo ($row->options->has('size') ? $row->options->size : ''); ?></p>
                   </td>
                   <td>$<?php echo $row->price; ?></td>
-                  <td>$<?php echo $row->total; ?></td>
+                  <td>$<?php echo $row->subtotal; ?></td>
               </tr>
 
           <?php endforeach;?>
@@ -38,7 +41,7 @@
           </tr>
           <tr>
               <td colspan="2">&nbsp;</td>
-              <td>Tax</td>
+              <td>IVA</td>
               <td><?php echo Cart::tax(); ?></td>
           </tr>
           <tr>
@@ -51,7 +54,7 @@
   <table>
       <td colspan="2">
         <!--<button type="submit" class="btn btn-link">Checkout</button>-->
-        {!!link_to_route('producto.checkout', $title = 'Checkout', $parameters = '', $attributes = ['class' => 'btn btn-link']);!!}
+        {!!link_to_route('venta.checkout', $title = 'Checkout', $parameters = '', $attributes = ['class' => 'btn btn-link']);!!}
       </td>
 
       <td colspan="2">

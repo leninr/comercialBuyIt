@@ -44,11 +44,6 @@ class ControladorProducto extends Controller
         return $this->index();
     }
 
-    public function checkout(){
-      
-    }
-
-
     public function vaciarCarro(){
       Cart::destroy();
       return $this->index();

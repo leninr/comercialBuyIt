@@ -1,6 +1,7 @@
 @extends('layouts.maestra')
 @section('contenido')
 
+@include('alerts.shoppingCart')
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
   <ul class="orbit-container">
     <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
