@@ -48,6 +48,9 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/"><i class="fa fa-dashboard fa-fw"></i> buyIt!</a>
+            <div style="margin:10px 0 0 150px">
+              {!! link_to_route('producto.index', $title = 'Ver Productos', $parameters = '', $attributes = ['class' => 'btn btn-primary']);!!}
+            </div>
         </div>
         <!-- /.navbar-header -->
 

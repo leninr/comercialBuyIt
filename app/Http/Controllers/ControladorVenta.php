@@ -3,6 +3,7 @@
 namespace comercialBuyIt\Http\Controllers;
 
 use Illuminate\Http\Request;
+use comercialBuyIt\User;
 
 use comercialBuyIt\Http\Requests;
 
@@ -18,8 +19,9 @@ class ControladorVenta extends Controller
     }
 
     public function create(){
-
-        return view('venta/create');
+        $id = auth()->user()->idUsuario;
+        $user = User::find($id);
+        return view('venta/create', ['user'=>$user]);
     }
 
     public function edit($id){
