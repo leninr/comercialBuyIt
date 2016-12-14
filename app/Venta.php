@@ -10,6 +10,6 @@ class Venta extends Model
     public $primaryKey  = 'idVenta';
 
     protected $fillable = [
-        'idUsuarioCompradorVenta', 'idProductoVenta', 'cantidadVenta', 'fechaVenta', 
+        'idUsuarioCompradorVenta', 'idUsuarioVendedorVenta', 'idProductoVenta', 'cantidadVenta', 'fechaVenta', 
     ];
 }

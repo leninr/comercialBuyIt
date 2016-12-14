@@ -12,7 +12,7 @@
         <div class="col-lg-12">
 					<?php use comercialBuyIt\Producto;
 								if (Cart::count() != 0): ?>
-					{!!Form::model($user,['route'=>['venta.store',$user->idUsuario],'method'=>'POST'])!!}
+					{!!Form::model($user,['route'=>['venta.store'],'method'=>'POST'])!!}
 						<table>
 							<tr>
 								<td>
@@ -37,7 +37,6 @@
 											{!!Form::label('Teléfono: ')!!}
 											{!!Form::label($user->telefonoUsuario)!!}
 										</div>
-										<button class="btn btn-success">Pagar</button>
 										<br>
 										<br>
 								</td>
@@ -93,6 +92,11 @@
 							        </tfoot>
 							    </table>
 								</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+										<button class="btn btn-success btn-lg btn-block">Pagar</button>
 								</td>
 							</tr>
 						</table>

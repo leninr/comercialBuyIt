@@ -81,6 +81,9 @@
                         <li><a href="/editMe"><i class="fa fa-user fa-fw"></i> Perfil</a></li>
                         <li><a href="/misProductos"><i class="fa fa-list-alt fa-fw"></i> Mis Productos</a></li>
                         <li class="divider"></li>
+                        <li><a href="/misCompras"><i class="fa fa-angle-double-left fa-fw"></i> Mis Compras</a></li>
+                        <li><a href="/misVentas"><i class="fa fa-angle-double-right fa-fw"></i> Mis Ventas</a></li>
+                        <li class="divider"></li>
                         <li>
                             <a href="{{ url('/logout') }}"
                                 onclick="event.preventDefault();

@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'], function()
 {
     Route::get('/producto/create', 'ControladorProducto@create');
     Route::get('/misProductos', 'ControladorProducto@misProductos');
+    Route::get('/misCompras', 'ControladorVenta@misCompras');
+    Route::get('/misVentas', 'ControladorVenta@misVentas');
     Route::get('/editMe', 'ControladorUsuario@editMe');
     Route::get('/addToCart/{idProducto}',[
       'as' => 'producto.addToCart',
